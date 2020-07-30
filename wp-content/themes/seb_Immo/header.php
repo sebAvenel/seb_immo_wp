@@ -8,7 +8,7 @@
 </head>
 <body class="home">
 <header class="nav">
-    <a href="<?php home_url('/') ?>" class="nav__logo" title="<?= __('Homepage', 'seb_immo') ?>">
+    <a href="<?= home_url('/') ?>" class="nav__logo" title="<?= __('Homepage', 'seb_immo') ?>">
         <img src="<?= get_theme_mod('logo') ?>" alt="">
     </a>
     <?php
