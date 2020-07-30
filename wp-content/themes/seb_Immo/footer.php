@@ -1,4 +1,6 @@
 <footer class="footer container">
+    <?php dynamic_sidebar('footer') ?>
+    <!--
     <div class="footer__col">
         <div class="footer__title">Pages</div>
         <ul>
@@ -43,6 +45,7 @@
             </a>
         </div>
     </div>
+    -->
 </footer>
 
 <?php wp_footer(); ?>
