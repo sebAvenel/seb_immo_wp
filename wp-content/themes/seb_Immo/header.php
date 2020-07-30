@@ -9,7 +9,7 @@
 <body class="home">
 <header class="nav">
     <a href="index.html" class="nav__logo" title="Page d'accueil">
-        <img src="<?= get_theme_mod('logo') ?>>" alt="">
+        <img src="<?= get_theme_mod('logo') ?>" alt="">
     </a>
     <ul class="nav__menu">
         <li><a href="#">Acheter</a></li>
