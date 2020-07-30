@@ -10,7 +10,7 @@ add_action('customize_register', function (WP_Customize_Manager $manager){
     ]);
 
     $manager->add_control(new WP_Customize_Image_Control($manager, 'logo', [
-        'label' => __('Logo', 'Seb Immo'),
+        'label' => __('Logo', 'seb_Immo'),
         'section' => 'seb_immo_appearance'
     ]));
 });
