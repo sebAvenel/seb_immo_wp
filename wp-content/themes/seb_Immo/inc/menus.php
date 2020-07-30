@@ -3,7 +3,10 @@ add_action('after_setup_theme', function (){
     register_nav_menu('header', __('Main navigation', 'seb_Immo'));
 });
 
+require_once('widgets/social.php');
+
 add_action('widgets_init', function (){
+    register_widget(SebImmo_Social_widget::class);
     register_sidebar([
         'id' => 'footer',
         'name' => __('Footer', 'seb_Immo'),
@@ -13,3 +16,5 @@ add_action('widgets_init', function (){
         'after_widget' => '</div>'
     ]);
 });
+
+
