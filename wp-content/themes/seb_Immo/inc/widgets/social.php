@@ -8,11 +8,11 @@ class SebImmo_Social_widget extends WP_Widget {
     {
         parent::__construct('seb_immo_social_widget', __('Social widget', 'seb_Immo'));
         $this->fields = [
+            'title' => __('Title', 'seb_Immo'),
             'credits' => __('Credits', 'seb_Immo'),
             'twitter' => 'Twitter',
             'facebook' => 'facebook',
             'instagram' => 'Instagram',
-            'Title' => __('Title', 'seb_Immo')
         ];
     }
 
@@ -28,7 +28,10 @@ class SebImmo_Social_widget extends WP_Widget {
             $title = apply_filters('widget_title', $instance['title']);
             echo $args['before_title'] . $title . $args['after_title'];
         }
-        echo 'Réseaux sociaux !!';
+        $template = locate_template('widgets/social.php');
+        if (!empty($template)){
+            include($template); // Accès dans le template aux variables qui ont été crées dans le même contexte ($args, $instance...)
+        }
         echo $args['after_widget'];
     }
 
