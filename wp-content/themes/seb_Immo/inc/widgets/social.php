@@ -12,7 +12,7 @@ class SebImmo_Social_widget extends WP_Widget {
      * @param array $args
      * @param array $instance
      */
-    public function widget($args, $instance)
+    public function widget(array $args, array $instance):void
     {
         echo $args['before_widget'];
         if (isset($instance['title'])){
@@ -21,6 +21,28 @@ class SebImmo_Social_widget extends WP_Widget {
         }
         echo 'Réseaux sociaux !!';
         echo $args['after_widget'];
+    }
+
+    /**
+     * Retourne le formulaire du widget
+     * @param array $instance
+     * @return string|void
+     */
+    public function form(array $instance):void
+    {
+        $credits = $instance['credits'] ?? '';
+        ?>
+        <p>
+            <label for="<?= $this->get_field_id('credits') ?>"><?= __('Credits', 'seb_Immo') ?></label>
+            <input
+                type="text"
+                class="widefat"
+                name="<?= $this->get_field_name('credits') ?>"
+                id="<?= $this->get_field_id('credits') ?>"
+                value="<?= esc_attr($credits) ?>"
+            >
+        </p>
+        <?php
     }
 
 }
