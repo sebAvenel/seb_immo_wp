@@ -2,9 +2,18 @@
 
 class SebImmo_Social_widget extends WP_Widget {
 
+    public $fields = [];
+
     public function __construct()
     {
         parent::__construct('seb_immo_social_widget', __('Social widget', 'seb_Immo'));
+        $this->fields = [
+            'credits' => __('Credits', 'seb_Immo'),
+            'twitter' => 'Twitter',
+            'facebook' => 'facebook',
+            'instagram' => 'Instagram',
+            'Title' => __('Title', 'seb_Immo')
+        ];
     }
 
     /**
@@ -12,7 +21,7 @@ class SebImmo_Social_widget extends WP_Widget {
      * @param array $args
      * @param array $instance
      */
-    public function widget(array $args, array $instance):void
+    public function widget($args, $instance):void
     {
         echo $args['before_widget'];
         if (isset($instance['title'])){
@@ -28,21 +37,24 @@ class SebImmo_Social_widget extends WP_Widget {
      * @param array $instance
      * @return string|void
      */
-    public function form(array $instance):void
+    public function form($instance):void
     {
-        $credits = $instance['credits'] ?? '';
-        ?>
-        <p>
-            <label for="<?= $this->get_field_id('credits') ?>"><?= __('Credits', 'seb_Immo') ?></label>
-            <input
-                type="text"
-                class="widefat"
-                name="<?= $this->get_field_name('credits') ?>"
-                id="<?= $this->get_field_id('credits') ?>"
-                value="<?= esc_attr($credits) ?>"
-            >
-        </p>
-        <?php
+        foreach ($this->fields as $field => $label){
+            $value = $instance[$field] ?? '';
+            ?>
+            <p>
+                <label for="<?= $this->get_field_id($field) ?>"><?= esc_html($label) ?></label>
+                <input
+                    type="text"
+                    class="widefat"
+                    name="<?= $this->get_field_name($field) ?>"
+                    id="<?= $this->get_field_id($field) ?>"
+                    value="<?= esc_attr($value) ?>"
+                >
+            </p>
+            <?php
+        }
+
     }
 
     /**
@@ -51,10 +63,14 @@ class SebImmo_Social_widget extends WP_Widget {
      * @param array $old_instance
      * @return array
      */
-    public function update(array $new_instance, array $old_instance):array
+    public function update($new_instance, $old_instance):array
     {
-        return [
-            'credits' => $new_instance['credits']
-        ];
+        $output = [];
+        foreach ($this->fields as $field => $label){
+            if (!empty($new_instance[$field])){
+                $output[$field] = $new_instance[$field];
+            }
+        }
+        return $output;
     }
 }
