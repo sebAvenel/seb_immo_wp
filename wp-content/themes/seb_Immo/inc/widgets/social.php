@@ -45,4 +45,16 @@ class SebImmo_Social_widget extends WP_Widget {
         <?php
     }
 
+    /**
+     * Permet de traiter les données du widget
+     * @param array $new_instance
+     * @param array $old_instance
+     * @return array
+     */
+    public function update(array $new_instance, array $old_instance):array
+    {
+        return [
+            'credits' => $new_instance['credits']
+        ];
+    }
 }
