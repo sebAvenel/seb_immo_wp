@@ -61,9 +61,7 @@
                                 </p>
                                 <a href="<?php the_permalink() ?>" class="news__action">
                                     Lire la suite
-                                    <svg class="icon">
-                                        <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                                    </svg>
+                                    <?= seb_Immo_icon('arrow') ?>
                                 </a>
                             </div>
                         </article>
