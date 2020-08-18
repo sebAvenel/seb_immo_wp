@@ -28,7 +28,7 @@
 
 <div class="container">
 
-    <h1 class="page-title"><?= get_the_title(get_option('page_for_posts')) ?></h1>
+    <h1 class="page-title"><?= single_post_title() ?></h1>
 
     <div class="page-sidebar">
         <div>
