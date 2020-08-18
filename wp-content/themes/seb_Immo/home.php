@@ -36,7 +36,7 @@
                 <?php if (have_posts()): ?>
                     <?php while (have_posts()): the_post(); ?>
                         <article class="news">
-                            <a href="news-single.html" title="Titre de la news 0" class="news__image">
+                            <a href="<?php the_permalink() ?>" title="Titre de la news 0" class="news__image">
                                 <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
                             </a>
                             <div class="news__body">
@@ -59,7 +59,7 @@
                                     quo
                                     reprehenderit veniam voluptate.
                                 </p>
-                                <a href="news-single.html" class="news__action">
+                                <a href="<?php the_permalink() ?>" class="news__action">
                                     Lire la suite
                                     <svg class="icon">
                                         <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
