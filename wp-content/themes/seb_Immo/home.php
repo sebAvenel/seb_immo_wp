@@ -41,7 +41,12 @@
                             </a>
                             <div class="news__body">
                                 <header class="news__header">
-                                    <a class="news__tag" href="news.html">Bons plans</a>
+                                    <?php
+                                        $categories = get_the_category();
+                                        if (!empty($categories)):
+                                    ?>
+                                    <a class="news__tag" href="<?= get_term_link($categories[0]) ?>"><?= $categories[0]->name ?></a>
+                                    <?php endif; ?>
                                     <a class="news__title" href="news-single.html"><?= the_title() ?></a>
                                     <div class="news__date">Publié le 12/00/2020</div>
                                 </header>
