@@ -50,15 +50,9 @@
                                     <a class="news__title" href="<?php the_permalink() ?>"><?= the_title() ?></a>
                                     <div class="news__date"><?= sprintf(__('Published on %s at %s', 'seb_immo'), get_the_date(), get_the_time()) ?></div>
                                 </header>
-                                <p class="news__content">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae
-                                    eaque
-                                    minima odit
-                                    optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo
-                                    nostrum
-                                    quo
-                                    reprehenderit veniam voluptate.
-                                </p>
+                                <div class="news__content">
+                                    <?php the_excerpt() ?>
+                                </div>
                                 <a href="<?php the_permalink() ?>" class="news__action">
                                     Lire la suite
                                     <?= seb_Immo_icon('arrow') ?>
