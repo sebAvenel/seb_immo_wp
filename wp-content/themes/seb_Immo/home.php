@@ -36,7 +36,7 @@
                 <?php if (have_posts()): ?>
                     <?php while (have_posts()): the_post(); ?>
                         <article class="news">
-                            <a href="<?php the_permalink() ?>" title="Titre de la news 0" class="news__image">
+                            <a href="<?php the_permalink() ?>" title="<?= esc_attr(get_the_title()) ?>" class="news__image">
                                 <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
                             </a>
                             <div class="news__body">
@@ -67,7 +67,7 @@
                         </article>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <h2><?= __('No posts found', 'agencia') ?></h2>
+                    <h2><?= __('No posts found', 'seb_Immo') ?></h2>
                 <?php endif; ?>
                 <div class="pagination">
                     <a href="news.html" class="page-numbers prev">
