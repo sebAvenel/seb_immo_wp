@@ -33,138 +33,39 @@
     <div class="page-sidebar">
         <div>
             <div class="news-list">
-
-                <article class="news">
-                    <a href="news-single.html" title="Titre de la news 0" class="news__image">
-                        <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
-                    </a>
-                    <div class="news__body">
-                        <header class="news__header">
-                            <a class="news__tag" href="news.html">Bons plans</a>
-                            <a class="news__title" href="news-single.html">Titre de la news 0</a>
-                            <div class="news__date">Publié le 12/00/2020</div>
-                        </header>
-                        <p class="news__content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae eaque
-                            minima odit
-                            optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo nostrum
-                            quo
-                            reprehenderit veniam voluptate.
-                        </p>
-                        <a href="news-single.html" class="news__action">
-                            Lire la suite
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="news">
-                    <a href="news-single.html" title="Titre de la news 1" class="news__image">
-                        <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
-                    </a>
-                    <div class="news__body">
-                        <header class="news__header">
-                            <a class="news__tag" href="news.html">Bons plans</a>
-                            <a class="news__title" href="news-single.html">Titre de la news 1</a>
-                            <div class="news__date">Publié le 12/01/2020</div>
-                        </header>
-                        <p class="news__content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae eaque
-                            minima odit
-                            optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo nostrum
-                            quo
-                            reprehenderit veniam voluptate.
-                        </p>
-                        <a href="news-single.html" class="news__action">
-                            Lire la suite
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="news">
-                    <a href="news-single.html" title="Titre de la news 2" class="news__image">
-                        <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
-                    </a>
-                    <div class="news__body">
-                        <header class="news__header">
-                            <a class="news__tag" href="news.html">Bons plans</a>
-                            <a class="news__title" href="news-single.html">Titre de la news 2</a>
-                            <div class="news__date">Publié le 12/02/2020</div>
-                        </header>
-                        <p class="news__content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae eaque
-                            minima odit
-                            optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo nostrum
-                            quo
-                            reprehenderit veniam voluptate.
-                        </p>
-                        <a href="news-single.html" class="news__action">
-                            Lire la suite
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="news">
-                    <a href="news-single.html" title="Titre de la news 3" class="news__image">
-                        <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
-                    </a>
-                    <div class="news__body">
-                        <header class="news__header">
-                            <a class="news__tag" href="news.html">Bons plans</a>
-                            <a class="news__title" href="news-single.html">Titre de la news 3</a>
-                            <div class="news__date">Publié le 12/03/2020</div>
-                        </header>
-                        <p class="news__content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae eaque
-                            minima odit
-                            optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo nostrum
-                            quo
-                            reprehenderit veniam voluptate.
-                        </p>
-                        <a href="news-single.html" class="news__action">
-                            Lire la suite
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="news">
-                    <a href="news-single.html" title="Titre de la news 4" class="news__image">
-                        <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
-                    </a>
-                    <div class="news__body">
-                        <header class="news__header">
-                            <a class="news__tag" href="news.html">Bons plans</a>
-                            <a class="news__title" href="news-single.html">Titre de la news 4</a>
-                            <div class="news__date">Publié le 12/04/2020</div>
-                        </header>
-                        <p class="news__content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae eaque
-                            minima odit
-                            optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo nostrum
-                            quo
-                            reprehenderit veniam voluptate.
-                        </p>
-                        <a href="news-single.html" class="news__action">
-                            Lire la suite
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-
+                <?php if (have_posts()): ?>
+                    <?php while (have_posts()): the_post(); ?>
+                        <article class="news">
+                            <a href="news-single.html" title="Titre de la news 0" class="news__image">
+                                <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
+                            </a>
+                            <div class="news__body">
+                                <header class="news__header">
+                                    <a class="news__tag" href="news.html">Bons plans</a>
+                                    <a class="news__title" href="news-single.html"><?= the_title() ?></a>
+                                    <div class="news__date">Publié le 12/00/2020</div>
+                                </header>
+                                <p class="news__content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut beatae
+                                    eaque
+                                    minima odit
+                                    optio sapiente. Dolore dolorem dolores explicabo facere impedit, ipsam magnam, nemo
+                                    nostrum
+                                    quo
+                                    reprehenderit veniam voluptate.
+                                </p>
+                                <a href="news-single.html" class="news__action">
+                                    Lire la suite
+                                    <svg class="icon">
+                                        <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <h2><?= __('No posts found', 'agencia') ?></h2>
+                <?php endif; ?>
                 <div class="pagination">
                     <a href="news.html" class="page-numbers prev">
                         <svg class="icon">
