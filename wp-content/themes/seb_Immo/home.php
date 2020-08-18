@@ -28,7 +28,7 @@
 
 <div class="container">
 
-    <h1 class="page-title">Actualités</h1>
+    <h1 class="page-title"><?= get_the_title(get_option('page_for_posts')) ?></h1>
 
     <div class="page-sidebar">
         <div>
