@@ -37,7 +37,11 @@
                     <?php while (have_posts()): the_post(); ?>
                         <article class="news">
                             <a href="<?php the_permalink() ?>" title="<?= esc_attr(get_the_title()) ?>" class="news__image">
-                                <img src="https://picsum.photos/id/234/250/250.jpg" alt="">
+                            <?php if (has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail() ?>
+                            <?php else: ?>
+                                <img width="250" height="250" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPcXg8AAfMBOOg8T0oAAAAASUVORK5CYII=">
+                            <?php endif; ?>
                             </a>
                             <div class="news__body">
                                 <header class="news__header">
