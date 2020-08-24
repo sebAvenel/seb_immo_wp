@@ -37,26 +37,12 @@
                     <?php while (have_posts()): the_post(); ?>
                         <?php get_template_part('template-parts/post'); ?>
                     <?php endwhile; ?>
+                    <div class="pagination">
+                        <?= seb_immo_paginate() ?>
+                    </div>
                 <?php else: ?>
                     <h2><?= __('No posts found', 'seb_Immo') ?></h2>
                 <?php endif; ?>
-                <div class="pagination">
-                    <a href="news.html" class="page-numbers prev">
-                        <svg class="icon">
-                            <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                        </svg>
-                    </a>
-                    <a href="news.html" class="page-numbers">1</a>
-                    <a href="news.html" class="page-numbers">2</a>
-                    <a href="news.html" class="page-numbers">3</a>
-                    <span class="page-numbers current" aria-current="page">4</span>
-                    <a href="news.html" class="page-numbers">5</a>
-                    <a href="news.html" class="page-numbers next">
-                        <svg class="icon">
-                            <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                        </svg>
-                    </a>
-                </div>
             </div>
         </div>
         <aside class="sidebar">

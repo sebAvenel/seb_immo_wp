@@ -13,5 +13,9 @@ function seb_Immo_icon(string $name): string
     return <<<HTML
     <svg class="icon"><use xlink:href="{$spriteUrl}#{$name}"></use></svg>
 HTML;
+}
 
+function seb_immo_paginate(): string
+{
+    return '<div class="pagination">' . paginate_links(['prev_text' => seb_Immo_icon('arrow'), 'next_text' => seb_Immo_icon('arrow')]) . '</div>';
 }
