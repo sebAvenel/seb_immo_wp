@@ -28,7 +28,7 @@ class SebImmo_Social_widget extends WP_Widget {
             $title = apply_filters('widget_title', $instance['title']);
             echo $args['before_title'] . $title . $args['after_title'];
         }
-        $template = locate_template('widgets/social.php');
+        $template = locate_template('template-parts/widgets/social.php');
         if (!empty($template)){
             include($template); // Accès dans le template aux variables qui ont été crées dans le même contexte ($args, $instance...)
         }
