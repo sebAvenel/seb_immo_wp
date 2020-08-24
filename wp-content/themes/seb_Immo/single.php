@@ -11,7 +11,7 @@
                         ?>
                         <a class="news__tag" href="<?= get_term_link($categories[0]) ?>"><?= $categories[0]->name ?></a>
                     <?php endif; ?>
-                    <div class="news__date">Publié le 12/0/2020</div>
+                    <div class="news__date"><?= sprintf(__('Published on %s at %s', 'seb_immo'), get_the_date(), get_the_time()) ?></div>
                 </div>
             </header>
             <div class="formatted">
