@@ -60,6 +60,8 @@
             </div>
         </div>
         <aside class="sidebar">
+            <?php dynamic_sidebar('blog'); ?>
+            <!--
             <div class="sidebar__widget">
                 <div class="sidebar__title">Recherche</div>
                 <form action="#" class="form-group form-search">
@@ -71,37 +73,7 @@
                     </button>
                 </form>
             </div>
-
-            <div class="sidebar__widget">
-                <h4 class="sidebar__title">Dernières actualités</h4>
-                <ul class="sidebar__list">
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 10m²</a></li>
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 20m²</a></li>
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 30m²</a></li>
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 40m²</a></li>
-
-                </ul>
-            </div>
-
-            <div class="sidebar__widget">
-                <h4 class="sidebar__title">Dernières actualités</h4>
-                <ul class="sidebar__list">
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 10m²</a></li>
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 20m²</a></li>
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 30m²</a></li>
-
-                    <li><a href="single.html">Maison 4 pièce(s) - 40m²</a></li>
-
-                </ul>
-            </div>
-
+            -->
         </aside>
 
     </div>
