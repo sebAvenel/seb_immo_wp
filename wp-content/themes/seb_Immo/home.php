@@ -37,9 +37,7 @@
                     <?php while (have_posts()): the_post(); ?>
                         <?php get_template_part('template-parts/post'); ?>
                     <?php endwhile; ?>
-                    <div class="pagination">
-                        <?= seb_immo_paginate() ?>
-                    </div>
+                    <?= seb_immo_paginate() ?>
                 <?php else: ?>
                     <h2><?= __('No posts found', 'seb_Immo') ?></h2>
                 <?php endif; ?>
