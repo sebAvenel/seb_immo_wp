@@ -3,7 +3,7 @@
     <?php while (have_posts()): the_post(); ?>
         <main>
             <header class="news-single__header">
-                <div class="news-single__title">Article de démonstration</div>
+                <div class="news-single__title"><?php the_title() ?></div>
                 <div class="news-single__meta">
                     <a class="news__tag" href="news.html">Bons plans</a>
                     <div class="news__date">Publié le 12/0/2020</div>
