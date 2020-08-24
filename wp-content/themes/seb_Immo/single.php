@@ -5,7 +5,12 @@
             <header class="news-single__header">
                 <div class="news-single__title"><?php the_title() ?></div>
                 <div class="news-single__meta">
-                    <a class="news__tag" href="news.html">Bons plans</a>
+                    <?php
+                    $categories = get_the_category();
+                    if (!empty($categories)):
+                        ?>
+                        <a class="news__tag" href="<?= get_term_link($categories[0]) ?>"><?= $categories[0]->name ?></a>
+                    <?php endif; ?>
                     <div class="news__date">Publié le 12/0/2020</div>
                 </div>
             </header>
