@@ -15,9 +15,11 @@
                 </div>
             </header>
             <div class="formatted">
-                <p>
-                    <img src="https://i.picsum.photos/id/234/950/530.jpg" alt="">
-                </p>
+                <?php if (has_post_thumbnail()): ?>
+                    <p>
+                        <?= the_post_thumbnail() ?>
+                    </p>
+                <?php endif; ?>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea esse odit optio! At dolor, doloremque
                     ducimus,
                     earum et ex incidunt, ipsam maxime nemo numquam quam repellendus soluta unde voluptate
