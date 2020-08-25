@@ -17,7 +17,7 @@
             <div class="formatted">
                 <?php if (has_post_thumbnail()): ?>
                     <p>
-                        <?= the_post_thumbnail() ?>
+                        <?= the_post_thumbnail('full') ?>
                     </p>
                 <?php endif; ?>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea esse odit optio! At dolor, doloremque
