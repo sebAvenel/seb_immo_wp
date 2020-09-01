@@ -5,3 +5,28 @@ Version: 1.2
 Requires at least: 5.4
 Requires PHP: 7.3.5
 */
+
+.formatted .blocks-gallery-grid{
+    display: flex;
+    margin-left: 0;
+}
+
+.formatted .blocks-gallery-grid li{
+    padding-left: 0;
+}
+
+.formatted .blocks-gallery-grid li:last-child{
+    margin-bottom: 16px!important;
+}
+
+.formatted .blocks-gallery-grid li::before{
+    display: none;
+}
+
+li.blocks-gallery-item{
+    margin: 15px!important;
+}
+
+.formatted .wp-block-buttons{
+    margin-bottom: 1.5em;
+}
