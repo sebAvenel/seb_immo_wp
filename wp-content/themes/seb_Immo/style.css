@@ -30,3 +30,14 @@ li.blocks-gallery-item{
 .formatted .wp-block-buttons{
     margin-bottom: 1.5em;
 }
+
+.comments .edit-link,
+.comments .reply{
+    font-weight: 300;
+    font-size: 0.8em;
+}
+
+.comments .edit-link::before,
+.comments .reply::before{
+    content: ' - ';
+}
