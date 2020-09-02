@@ -21,6 +21,13 @@
                     </p>
                 <?php endif; ?>
                 <?php the_content(); ?>
+            </div>
+
+            <?php
+                if (comments_open() || absint(get_comments_number()) > 0){
+                    comments_template();
+                }
+            ?>
 
             <div class="comments">
                 <div class="comments__title">10 commentaires</div>
@@ -28,31 +35,31 @@
                 <div class="comments__list">
 
                     <div class="comment">
-                        <img alt=""
-                             src="https://secure.gravatar.com/avatar/d7a973c7dab26985da5f961be7b74480?s=120&amp;r=g"
-                             class="comment__avatar" height="120" width="120">
-                        <div class="comment__body">
-                            <footer>
-                                <div class="comment__username">A WordPress Commenter</div>
-                                <div class="comment__date">October 23, 2019 at 11:51 am</div>
-                            </footer>
-                            <div class="comment__content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur delectus
-                                    necessitatibus officiis.
-                                    Accusantium autem dolorem est id inventore laudantium molestias, nulla pariatur
-                                    perspiciatis provident, quia
-                                    reiciendis rem sapiente tempore, veniam.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque culpa deleniti
-                                    dicta dolores esse,
-                                    incidunt magnam molestiae nam natus non pariatur placeat quas quasi quisquam quo
-                                    sapiente suscipit
-                                    voluptatum!
-                                </p>
+                            <img alt=""
+                                 src="https://secure.gravatar.com/avatar/d7a973c7dab26985da5f961be7b74480?s=120&amp;r=g"
+                                 class="comment__avatar" height="120" width="120">
+                            <div class="comment__body">
+                                <footer>
+                                    <div class="comment__username">A WordPress Commenter</div>
+                                    <div class="comment__date">October 23, 2019 at 11:51 am</div>
+                                </footer>
+                                <div class="comment__content">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur delectus
+                                        necessitatibus officiis.
+                                        Accusantium autem dolorem est id inventore laudantium molestias, nulla pariatur
+                                        perspiciatis provident, quia
+                                        reiciendis rem sapiente tempore, veniam.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque culpa deleniti
+                                        dicta dolores esse,
+                                        incidunt magnam molestiae nam natus non pariatur placeat quas quasi quisquam quo
+                                        sapiente suscipit
+                                        voluptatum!
+                                    </p>
+                                </div>
                             </div>
-                        </div>
                     </div>
 
                     <div class="comment">
