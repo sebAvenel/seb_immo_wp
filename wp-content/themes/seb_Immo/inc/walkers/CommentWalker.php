@@ -17,7 +17,7 @@ class Seb_ImmoCommentWalker extends \Walker_Comment
      */
     protected function html5_comment( $comment, $depth, $args ) {
         //var_dump('Hello');
-        $tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+        $tag = ( 'div' === $args['style'] ) ? '<div' : '<li>';
 
         $commenter          = wp_get_current_commenter();
         $show_pending_links = ! empty( $commenter['comment_author'] );
