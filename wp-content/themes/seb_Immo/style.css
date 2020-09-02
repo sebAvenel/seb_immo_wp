@@ -31,13 +31,13 @@ li.blocks-gallery-item{
     margin-bottom: 1.5em;
 }
 
-.comments .edit-link,
-.comments .reply{
+.comment .edit-link,
+.comment .reply{
     font-weight: 300;
     font-size: 0.8em;
 }
 
-.comments .edit-link::before,
-.comments .reply::before{
+.comment .edit-link::before,
+.comment .reply::before{
     content: ' - ';
 }
