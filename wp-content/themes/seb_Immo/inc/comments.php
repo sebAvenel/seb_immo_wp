@@ -27,3 +27,19 @@ add_filter('comment_form_defaults', function (array $fields): array {
 HTML;
     return $fields;
 });
+
+add_filter('comment_form_fields', function (array $fields): array {
+    //var_dump(array_keys($fields));
+    $newFields = [];
+    foreach ($fields as $key => $value){
+        if ($key === 'comment'){
+
+        }else{
+            if ($key === 'cookies'){
+                $newFields['comment'] = $fields['comment'];
+            }
+            $newFields[$key] = $value;
+        }
+    }
+    return $newFields;
+});
