@@ -14,6 +14,6 @@ $count = absint(get_comments_number());
     <?php wp_list_comments(['style' => 'div', 'walker' => new Seb_ImmoCommentWalker()]); ?>
 
     <?php if (comments_open()): ?>
-        <?php comment_form(['title_reply' => '', 'class_form' => 'form-2column', 'class_submit' => 'btn']) ?>
+        <?php comment_form() ?>
     <?php endif; ?>
 </div>
