@@ -19,3 +19,11 @@ HTML;
 
     return $fields;
 });
+
+add_filter('comment_form_defaults', function (array $fields): array {
+    $commentLabel = _x('Comment', 'noun');
+    $fields['comment_field'] = <<<HTML
+    <textarea placeholder="{$commentLabel}" name="comment" id="comment" class="form-control full" required></textarea>
+HTML;
+    return $fields;
+});
