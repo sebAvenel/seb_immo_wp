@@ -41,5 +41,8 @@ add_filter('comment_form_fields', function (array $fields): array {
             $newFields[$key] = $value;
         }
     }
+    if (!isset($newFields['comment'])){
+        $newFields['comment'] = $fields['comment'];
+    }
     return $newFields;
 });
