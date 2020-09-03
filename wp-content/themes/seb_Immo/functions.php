@@ -20,3 +20,10 @@ function seb_immo_paginate(): string
 {
     return '<div class="pagination">' . paginate_links(['prev_text' => seb_Immo_icon('arrow'), 'next_text' => seb_Immo_icon('arrow')]) . '</div>';
 }
+
+function seb_immo_paginate_comments(): void
+{
+    echo '<div class="pagination">';
+    paginate_comments_links(['prev_text' => seb_Immo_icon('arrow'), 'next_text' => seb_Immo_icon('arrow')]);
+    echo '</div>';
+}
