@@ -5,6 +5,7 @@
 add_action('init', function (){
     register_post_type('bien', [
         'label' => 'Bien',
+        'menu_icon' => 'dashicons-admin-multisite',
         'labels' => [
             'name' => __('Property', 'agence'),
             'singular_name' => __('Property', 'agence'),
