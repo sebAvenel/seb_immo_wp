@@ -33,7 +33,7 @@ add_action('init', function (){
         'public' => true, // rendre le post type public, accessible
         'hierrachical' => false, // ne pas avoir de biens avec des sous-biens
         'exclude_from_search' => false, // on veut que ça apparaisse dans la recherche
-        'taxonomies' => ['property_type', 'property_city'],
+        'taxonomies' => ['property_type', 'property_city', 'property_option'],
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail']
     ]);
     register_taxonomy('property_type', 'property', [
@@ -65,10 +65,10 @@ add_action('init', function (){
             'search_items'              => __('Search cities', 'agence'),
             'popular_items'             => __('Popular cities', 'agence'),
             'all_items'                 => __('All cities', 'agence'),
-            'edit_item'                 => __('Edit type', 'agence'),
-            'view_item'                 => __('View type', 'agence'),
-            'update_item'               => __('Update type', 'agence'),
-            'add_new_item'              => __('Add new type', 'agence'),
+            'edit_item'                 => __('Edit city', 'agence'),
+            'view_item'                 => __('View city', 'agence'),
+            'update_item'               => __('Update city', 'agence'),
+            'add_new_item'              => __('Add new city', 'agence'),
             'new_item_name'             => __('New type name', 'agence'),
             'separate_items_with_commas'=> __('Separate cities with commas', 'agence'),
             'add_or_remove_items'       => __('Add or remove cities', 'agence'),
@@ -78,6 +78,28 @@ add_action('init', function (){
             'items_list_navigation'     => __('Types list navigation', 'agence'),
             'items_list'                => __('Types list', 'agence'),
             'back_to_items'             => __('&larr; Back to cities', 'agence'),
+        ]
+    ]);
+    register_taxonomy('property_option', 'property', [
+        'labels'  => [
+            'name'                      => __('Options', 'agence'),
+            'singular_name'             => __('Option', 'agence'),
+            'search_items'              => __('Search options', 'agence'),
+            'popular_items'             => __('Popular options', 'agence'),
+            'all_items'                 => __('All options', 'agence'),
+            'edit_item'                 => __('Edit option', 'agence'),
+            'view_item'                 => __('View option', 'agence'),
+            'update_item'               => __('Update option', 'agence'),
+            'add_new_item'              => __('Add new option', 'agence'),
+            'new_item_name'             => __('New type name', 'agence'),
+            'separate_items_with_commas'=> __('Separate options with commas', 'agence'),
+            'add_or_remove_items'       => __('Add or remove options', 'agence'),
+            'choose_from_most_used'     => __('Choose from your most used options', 'agence'),
+            'not_found'                 => __('No options found', 'agence'),
+            'no_terms'                  => __('No options', 'agence'),
+            'items_list_navigation'     => __('Types list navigation', 'agence'),
+            'items_list'                => __('Types list', 'agence'),
+            'back_to_items'             => __('&larr; Back to options', 'agence'),
         ]
     ]);
 });
