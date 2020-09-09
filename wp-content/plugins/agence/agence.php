@@ -33,7 +33,7 @@ add_action('init', function (){
         'public' => true, // rendre le post type public, accessible
         'hierrachical' => false, // ne pas avoir de biens avec des sous-biens
         'exclude_from_search' => false, // on veut que ça apparaisse dans la recherche
-        'taxonomies' => ['property_type'],
+        'taxonomies' => ['property_type', 'property_city'],
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail']
     ]);
     register_taxonomy('property_type', 'property', [
@@ -43,8 +43,6 @@ add_action('init', function (){
             'search_items'              => __('Search types', 'agence'),
             'popular_items'             => __('Popular types', 'agence'),
             'all_items'                 => __('All types', 'agence'),
-            'parent_item'               => __('Parent category', 'agence'),
-            'parent_item_colon'         => __('Parent category:', 'agence'),
             'edit_item'                 => __('Edit type', 'agence'),
             'view_item'                 => __('View type', 'agence'),
             'update_item'               => __('Update type', 'agence'),
@@ -57,8 +55,29 @@ add_action('init', function (){
             'no_terms'                  => __('No types', 'agence'),
             'items_list_navigation'     => __('Types list navigation', 'agence'),
             'items_list'                => __('Types list', 'agence'),
-            'most_used'                 => __('Most used', 'agence'),
             'back_to_items'             => __('&larr; Back to types', 'agence'),
+        ]
+    ]);
+    register_taxonomy('property_city', 'property', [
+        'labels'  => [
+            'name'                      => __('Cities', 'agence'),
+            'singular_name'             => __('City', 'agence'),
+            'search_items'              => __('Search cities', 'agence'),
+            'popular_items'             => __('Popular cities', 'agence'),
+            'all_items'                 => __('All cities', 'agence'),
+            'edit_item'                 => __('Edit type', 'agence'),
+            'view_item'                 => __('View type', 'agence'),
+            'update_item'               => __('Update type', 'agence'),
+            'add_new_item'              => __('Add new type', 'agence'),
+            'new_item_name'             => __('New type name', 'agence'),
+            'separate_items_with_commas'=> __('Separate cities with commas', 'agence'),
+            'add_or_remove_items'       => __('Add or remove cities', 'agence'),
+            'choose_from_most_used'     => __('Choose from your most used cities', 'agence'),
+            'not_found'                 => __('No cities found', 'agence'),
+            'no_terms'                  => __('No cities', 'agence'),
+            'items_list_navigation'     => __('Types list navigation', 'agence'),
+            'items_list'                => __('Types list', 'agence'),
+            'back_to_items'             => __('&larr; Back to cities', 'agence'),
         ]
     ]);
 });
