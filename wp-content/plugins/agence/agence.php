@@ -35,3 +35,6 @@ add_action('init', function (){
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail']
     ]);
 });
+
+register_activation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à l'activation du plugin
+register_deactivation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à la désactivation du plugin
