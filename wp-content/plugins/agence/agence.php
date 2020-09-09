@@ -37,6 +37,7 @@ add_action('init', function (){
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail']
     ]);
     register_taxonomy('property_type', 'property', [
+        'meta_box_cb' => 'post_categories_meta_box',
         'labels'  => [
             'name'                      => __('Types', 'agence'),
             'singular_name'             => __('Type', 'agence'),
@@ -59,6 +60,7 @@ add_action('init', function (){
         ]
     ]);
     register_taxonomy('property_city', 'property', [
+        'meta_box_cb' => 'post_categories_meta_box',
         'labels'  => [
             'name'                      => __('Cities', 'agence'),
             'singular_name'             => __('City', 'agence'),
@@ -81,6 +83,7 @@ add_action('init', function (){
         ]
     ]);
     register_taxonomy('property_option', 'property', [
+        'meta_box_cb' => 'post_categories_meta_box',
         'labels'  => [
             'name'                      => __('Options', 'agence'),
             'singular_name'             => __('Option', 'agence'),
