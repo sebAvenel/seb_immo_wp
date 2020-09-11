@@ -35,23 +35,16 @@
                   <button type="submit" class="btn">Commenter</button>
                 </form>
                 -->
-
             </div>
+
+            <?php //var_dump(get_attached_media('image', get_post())); die();?>
             <div>
                 <div class="bien__photos js-slider">
-
-                    <a href="https://picsum.photos/id/41/1280/720.jpg">
-                        <img class="bien__photo" src="https://picsum.photos/id/41/777/444.jpg" alt="">
+                    <?php foreach(get_attached_media('image', get_post()) as $image): ?>
+                    <a href="<?= wp_get_attachment_url($image->ID) ?>">
+                        <img class="bien__photo" src="<?= wp_get_attachment_image_url($image->ID, 'property-carousel'); ?>" alt="">
                     </a>
-
-                    <a href="https://picsum.photos/id/42/1280/720.jpg">
-                        <img class="bien__photo" src="https://picsum.photos/id/42/777/444.jpg" alt="">
-                    </a>
-
-                    <a href="https://picsum.photos/id/43/1280/720.jpg">
-                        <img class="bien__photo" src="https://picsum.photos/id/43/777/444.jpg" alt="">
-                    </a>
-
+                    <?php endforeach; ?>
                 </div>
             </div>
         </header>
