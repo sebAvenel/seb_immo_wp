@@ -65,11 +65,22 @@
         </div>
 
         <section class="bien-options">
-            <div class="bien-option"><img src="area.78237e19.svg" alt=""> Superficie: 93m²</div>
-            <div class="bien-option"><img src="elevator-fill.117c4510.svg" alt=""> Ascenseur</div>
-            <div class="bien-option"><img src="rooms.b02e3d15.svg" alt=""> Nbr chambres: 4</div>
-            <div class="bien-option"><img src="elevator.e0bdbd67.svg" alt=""> Etage: 3</div>
-            <div class="bien-option"><img src="parking.bb37c0bc.svg" alt=""> Parking: Oui</div>
+            <div class="bien-option"><img src="<?= get_template_directory_uri() ?>/assets/area.78237e19.svg" alt="">
+                <?= __('Surface', 'seb_Immo') ?>: <?php the_field('surface'); ?>m²
+            </div>
+            <div class="bien-option"><img src="<?= get_template_directory_uri() ?>/assets/rooms.b02e3d15.svg" alt="">
+                <?= __('Rooms', 'seb_Immo') ?>: <?php the_field('rooms'); ?>
+            </div>
+            <div class="bien-option"><img src="<?= get_template_directory_uri() ?>/assets/elevator.e0bdbd67.svg" alt="">
+                <?= __('Floor', 'seb_Immo') ?>: <?php the_field('floor'); ?>
+            </div>
+            <?php $options = get_the_terms(get_post(), 'property_option'); ?>
+            <?php foreach ($options as $option): ?>
+                <div class="bien-option">
+                    <img src="<?= the_field('icon', $option); ?> " alt="">
+                    <?= $option->name; ?>
+                </div>
+            <?php endforeach; ?>
         </section>
 
     </div>

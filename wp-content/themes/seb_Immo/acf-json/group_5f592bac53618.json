@@ -89,6 +89,27 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_5f5ba066d3f80",
+            "label": "Chambres",
+            "name": "rooms",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Nombre de chambres",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -108,5 +129,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1599679948
+    "modified": 1599840468
 }
