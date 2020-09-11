@@ -7,7 +7,7 @@
             <div>
                 <h1 class="bien__title"><?php the_title(); ?> - <?= the_field('surface'); ?>m²</h1>
                 <div class="bien__meta">
-                    <div class="bien__location">Avrillé (49240)</div>
+                    <div class="bien__location"><?= agence_city() ?></div>
                     <div class="bien__price">
                         <?php if (get_field('property_category') === 'buy'): ?>
                             <?= sprintf('%s $', get_field('price')); ?>
