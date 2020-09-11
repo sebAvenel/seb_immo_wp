@@ -109,3 +109,23 @@ add_action('init', function (){
 
 register_activation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à l'activation du plugin
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à la désactivation du plugin
+
+/**
+ * fonction de récupération de la ville et du code postal
+ * @param WP_Post|int|null $post
+ */
+function agence_city($post = null){
+    if ($post === null){
+        $post = get_post();
+    }
+    $cities = get_the_terms($post, 'property_city');
+    if (empty($cities)){
+        return;
+    }
+    $city = $cities[0];
+    echo $city->name;
+    $postalCode = get_field('postal_code', $city);
+    if ($postalCode){
+        echo ' (' . $postalCode . ')';
+    }
+}
