@@ -30,6 +30,7 @@ add_action('init', function (){
             'item_scheduled'            => __('Property scheduled', 'agence'),
             'item_uploaded'             => __('Property updated', 'agence'),
         ],
+        'has_archive' => true,
         'public' => true, // rendre le post type public, accessible
         'hierrachical' => false, // ne pas avoir de biens avec des sous-biens
         'exclude_from_search' => false, // on veut que ça apparaisse dans la recherche
