@@ -54,10 +54,13 @@
     <?php $i++; endwhile; ?>
 </div>
 
-<div class="pagination">
-    <?php next_posts_link(__('More properties +', 'seb_Immo')); ?>
-    <a href="#" class="btn">Voir plus de biens +</a>
-</div>
+<?php if(get_query_var('paged', 1) > 1): ?>
+    <?= seb_immo_paginate() ?>
+<?php else: ?>
+    <div class="pagination">
+        <?php next_posts_link(__('More properties +', 'seb_Immo')); ?>
+    </div>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 
