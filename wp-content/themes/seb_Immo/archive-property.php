@@ -56,9 +56,9 @@
 
 <?php if(get_query_var('paged', 1) > 1): ?>
     <?= seb_immo_paginate() ?>
-<?php else: ?>
+<?php elseif ($nextPostLink = get_next_posts_link(__('More properties +', 'seb_Immo'))): ?>
     <div class="pagination">
-        <?php next_posts_link(__('More properties +', 'seb_Immo')); ?>
+        <?= $nextPostLink ?>
     </div>
 <?php endif; ?>
 
