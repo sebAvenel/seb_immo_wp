@@ -55,6 +55,7 @@
 </div>
 
 <div class="pagination">
+    <?php next_posts_link(__('More properties +', 'seb_Immo')); ?>
     <a href="#" class="btn">Voir plus de biens +</a>
 </div>
 
