@@ -3,8 +3,8 @@
 <div class="container page-properties">
 
     <div class="search-form">
-        <h1 class="search-form__title"><?= esc_attr(get_the_title()) ?></h1>
-        <p>Retrouver tous nos biens sur le secteur de <strong>Montpellier</strong></p>
+        <h1 class="search-form__title">Agence Immo Caen</h1>
+        <h1>Retrouver tous nos biens sur le secteur de <strong>Caen</strong>
         <hr>
         <form action="listing.html" class="search-form__form">
             <div class="search-form__checkbox">
