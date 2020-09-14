@@ -115,7 +115,7 @@ register_deactivation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des
  * fonction de récupération de la ville et du code postal
  * @param WP_Post|int|null $post
  */
-function agence_city($post = null){
+function agence_city($post = null): void{
     if ($post === null){
         $post = get_post();
     }
@@ -128,5 +128,16 @@ function agence_city($post = null){
     $postalCode = get_field('postal_code', $city);
     if ($postalCode){
         echo ' (' . $postalCode . ')';
+    }
+}
+
+/**
+ *
+ */
+function agence_price( $post = null): void {
+    if (get_field('property_category', $post) === 'buy'){
+        echo sprintf(__('%s $', 'seb_Immo'), get_field('price'));
+    } else{
+        echo sprintf(__('%s $/mo', 'seb_Immo'), get_field('price'));
     }
 }
