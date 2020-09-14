@@ -36,6 +36,9 @@ add_action('init', function (){
         'public' => true, // rendre le post type public, accessible
         'hierrachical' => false, // ne pas avoir de biens avec des sous-biens
         'exclude_from_search' => false, // on veut que ça apparaisse dans la recherche
+        'rewrite' => [
+            'slug' => _x('property', 'URL', 'agence')
+        ],
         'taxonomies' => ['property_type', 'property_city', 'property_option'],
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail']
     ]);
