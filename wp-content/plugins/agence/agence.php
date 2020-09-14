@@ -1,7 +1,15 @@
 <?php
 /**
  * Plugin Name: Agence plugin
+ * Text Domain: agence
+ * Domain path: /languages
  */
+defined('ABSPATH') or die('rien à voir');
+
+add_action('plugins_loaded', function (){
+    load_plugin_textdomain('agence', false, basename(dirname(__FILE__)) . '/languages');
+});
+
 add_action('init', function (){
     register_post_type('property', [
         'label' => __('Property', 'agence'),
@@ -30,9 +38,13 @@ add_action('init', function (){
             'item_scheduled'            => __('Property scheduled', 'agence'),
             'item_uploaded'             => __('Property updated', 'agence'),
         ],
+        'has_archive' => true,
         'public' => true, // rendre le post type public, accessible
         'hierrachical' => false, // ne pas avoir de biens avec des sous-biens
         'exclude_from_search' => false, // on veut que ça apparaisse dans la recherche
+        'rewrite' => [
+            'slug' => _x('property', 'URL', 'agence')
+        ],
         'taxonomies' => ['property_type', 'property_city', 'property_option'],
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail']
     ]);
@@ -110,11 +122,13 @@ add_action('init', function (){
 register_activation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à l'activation du plugin
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à la désactivation du plugin
 
+require_once('query.php');
+
 /**
  * fonction de récupération de la ville et du code postal
  * @param WP_Post|int|null $post
  */
-function agence_city($post = null){
+function agence_city($post = null): void{
     if ($post === null){
         $post = get_post();
     }
@@ -127,5 +141,16 @@ function agence_city($post = null){
     $postalCode = get_field('postal_code', $city);
     if ($postalCode){
         echo ' (' . $postalCode . ')';
+    }
+}
+
+/**
+ *
+ */
+function agence_price( $post = null): void {
+    if (get_field('property_category', $post) === 'buy'){
+        echo sprintf(__('%s $', 'seb_Immo'), get_field('price'));
+    } else{
+        echo sprintf(__('%s $/mo', 'seb_Immo'), get_field('price'));
     }
 }
