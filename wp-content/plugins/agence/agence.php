@@ -2,6 +2,8 @@
 /**
  * Plugin Name: Agence plugin
  */
+defined('ABSPATH') or die('rien à voir');
+
 add_action('init', function (){
     register_post_type('property', [
         'label' => __('Property', 'agence'),
@@ -110,6 +112,8 @@ add_action('init', function (){
 
 register_activation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à l'activation du plugin
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à la désactivation du plugin
+
+require_once('query.php');
 
 /**
  * fonction de récupération de la ville et du code postal
