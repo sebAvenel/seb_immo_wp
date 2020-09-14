@@ -1,8 +1,14 @@
 <?php
 /**
  * Plugin Name: Agence plugin
+ * Text Domain: agence
+ * Domain path: /languages
  */
 defined('ABSPATH') or die('rien à voir');
+
+add_action('plugins_loaded', function (){
+    load_plugin_textdomain('agence', false, basename(dirname(__FILE__)) . '/languages');
+});
 
 add_action('init', function (){
     register_post_type('property', [
