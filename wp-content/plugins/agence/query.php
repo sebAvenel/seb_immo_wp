@@ -10,6 +10,7 @@ $propertyCategories = [];
 // Filtre les biens à acheter ou louer via le paramètrge property_category
 add_filter('query_vars', function (array $params): array {
     $params[] = 'property_category';
+    $params[] = 'city';
     return $params;
 });
 add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories): void {
@@ -26,6 +27,17 @@ add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories)
             'value' => $propertyCategories[get_query_var('property_category')]
         ];
         $query->set('meta_query', $meta_query);
+    }
+
+    $city = get_query_var('city');
+    if (get_query_var('city')){
+        $tax_query = $query->get('tax_query', []);
+        $tax_query[] = [
+            'taxonomy' => 'property_city',
+            'terms' => $city,
+            'field' => 'slug'
+        ];
+        $query->set('tax_query', $tax_query);
     }
 });
 
