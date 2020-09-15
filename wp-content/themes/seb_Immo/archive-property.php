@@ -5,6 +5,7 @@
             'taxonomy' => 'property_city'
     ]);
     $currentCity = get_query_var('city');
+    $currentPrice = get_query_var('price');
 ?>
 <div class="container page-properties">
 
@@ -32,7 +33,7 @@
                 <label for="city">Ville</label>
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" id="budget" placeholder="100 000 €">
+                <input type="number" class="form-control" id="budget" placeholder="100 000 €" name="price" value="<?= $currentPrice ?>">
                 <label for="budget">Prix max</label>
             </div>
             <div class="form-group">
