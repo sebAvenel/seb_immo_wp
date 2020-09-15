@@ -13,6 +13,7 @@ add_filter('query_vars', function (array $params): array {
     $params[] = 'city';
     $params[] = 'price';
     $params[] = 'property_type';
+    $params[] = 'rooms';
 
     return $params;
 });
@@ -64,6 +65,18 @@ add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories)
             'field' => 'slug'
         ];
         $query->set('tax_query', $tax_query);
+    }
+
+    $rooms = (int)get_query_var('rooms');
+    if ($rooms){
+        $meta_query = $query->get('meta_query', []);
+        $meta_query[] = [
+            'key' => 'rooms',
+            'value' => $rooms,
+            'compare' => '>=',
+            'type' => 'NUMERIC'
+        ];
+        $query->set('meta_query', $meta_query);
     }
 });
 
