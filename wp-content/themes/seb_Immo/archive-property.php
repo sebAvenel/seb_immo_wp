@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <?php
+    $isRent = get_query_var('property_category', 'buy') === _x('rent', 'URL', 'agence');
     $cities = get_terms([
             'taxonomy' => 'property_city'
     ]);
@@ -10,12 +11,25 @@
     $currentPrice = get_query_var('price');
     $currentType = get_query_var('property_type');
     $currentRooms = get_query_var('rooms');
+    $city = get_term_by('slug', $currentCity, 'property_city')->name;
+
 ?>
 <div class="container page-properties">
 
     <div class="search-form">
-        <h1 class="search-form__title">Agence Immo Caen</h1>
-        <h1>Retrouver tous nos biens sur le secteur de <strong>Caen</strong>
+        <h1 class="search-form__title">
+            <?= __('All our properties', 'seb_Immo'); ?>
+            <?php if ($isRent): ?>
+                <?= __(' for rent') ?>
+            <?php else: ?>
+                <?= __(' on sale') ?>
+            <?php endif; ?>
+        </h1>
+        <?php if ($currentType): ?>
+            <p><?= sprintf(__('Retrouver tous nos %ss sur le secteur de %s', 'seb_Immo'), $currentType, $city) ?></p>
+        <?php else: ?>
+            <p><?= sprintf(__('Retrouver tous nos biens sur le secteur de %s', 'seb_Immo'), $city) ?></p>
+        <?php endif; ?>
         <hr>
         <form action="" class="search-form__form">
             <div class="form-group">
