@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <input type="number" class="form-control" id="price" placeholder="100 000 €" name="price" value="<?= esc_attr($currentPrice) ?>">
-                <label for="price"><?= __('Max price', 'seb_Immo') ?></label>
+                <label for="price"><?= __('Budget', 'seb_Immo') ?></label>
             </div>
             <div class="form-group">
                 <select name="property_type" id="property_type" class="form-control">
