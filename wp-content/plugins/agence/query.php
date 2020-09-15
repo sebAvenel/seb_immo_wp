@@ -93,7 +93,14 @@ add_action('init', function () use (&$propertyCategories){
     );
 });
 
+// Menu current page
 add_filter('nav_menu_css_class', function (array $classes, WP_Post $item): array {
+    if (is_post_type_archive('property')){
+        global $wp;
+        if (trim(dirname(dirname($item->url)) . '/' .$wp->request, '/') === trim($item->url, '/')){
+            $classes[] = 'current_page_parent';
+        }
+    }
     // Placer l'active sur 'louer' ou 'acheter' selon le type de bien sur lequel on se trouve
     if (is_singular('property') && function_exists('get_field')){
         $property = get_queried_object();
