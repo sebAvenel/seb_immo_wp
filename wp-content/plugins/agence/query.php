@@ -12,6 +12,7 @@ add_filter('query_vars', function (array $params): array {
     $params[] = 'property_category';
     $params[] = 'city';
     $params[] = 'price';
+    $params[] = 'property_type';
 
     return $params;
 });
@@ -52,6 +53,17 @@ add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories)
             'type' => 'NUMERIC'
         ];
         $query->set('meta_query', $meta_query);
+    }
+
+    $type = get_query_var('property_type');
+    if ($type){
+        $tax_query = $query->get('tax_query', []);
+        $tax_query[] = [
+            'taxonomy' => 'property_type',
+            'terms' => $type,
+            'field' => 'slug'
+        ];
+        $query->set('tax_query', $tax_query);
     }
 });
 
