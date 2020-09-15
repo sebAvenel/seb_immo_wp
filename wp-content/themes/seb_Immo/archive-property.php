@@ -1,7 +1,10 @@
 <?php get_header(); ?>
 <?php
     $isRent = get_query_var('property_category', 'buy') === _x('rent', 'URL', 'agence');
-    var_dump($isRent);
+    $cities = get_terms([
+            'taxonomy' => 'property_city'
+    ]);
+    $currentCity = get_query_var('city');
 ?>
 <div class="container page-properties">
 
@@ -9,7 +12,7 @@
         <h1 class="search-form__title">Agence Immo Caen</h1>
         <h1>Retrouver tous nos biens sur le secteur de <strong>Caen</strong>
         <hr>
-        <form action="listing.html" class="search-form__form">
+        <form action="" class="search-form__form">
             <div class="search-form__checkbox">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" <?php checked(!$isRent) ?> type="radio" name="property_category" id="buy" value="buy">
@@ -21,7 +24,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="city" placeholder="Montpellier">
+                <select name="city" id="city" class="form-control">
+                    <?php foreach($cities as $city): ?>
+                        <option value="<?= $city->slug ?>" <?php selected($city->slug, $currentCity) ?>><?= $city->name ?></option>
+                    <?php endforeach; ?>
+                </select>
                 <label for="city">Ville</label>
             </div>
             <div class="form-group">
