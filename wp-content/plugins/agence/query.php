@@ -42,3 +42,6 @@ add_action('init', function () use (&$propertyCategories){
     );
 });
 
+function agence_is_rent_url(string $url): bool {
+    return strpos($url, _x('property', 'URL', 'agence') . '/' . _x('rent', 'URL', 'agence'));
+}
