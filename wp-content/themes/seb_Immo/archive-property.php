@@ -4,8 +4,12 @@
     $cities = get_terms([
             'taxonomy' => 'property_city'
     ]);
+    $types = get_terms([
+            'taxonomy' => 'property_type'
+    ]);
     $currentCity = get_query_var('city');
     $currentPrice = get_query_var('price');
+    $currentType = get_query_var('property_type');
 ?>
 <div class="container page-properties">
 
@@ -37,11 +41,13 @@
                 <label for="budget">Prix max</label>
             </div>
             <div class="form-group">
-                <select name="kind" id="kind" class="form-control">
-                    <option value="flat">Appartement</option>
-                    <option value="villa">Villa</option>
+                <select name="property_type" id="property_type" class="form-control">
+                    <option value=""><?= __('All types', 'agencia') ?></option>
+                    <?php foreach($types as $type): ?>
+                        <option value="<?= $type->slug ?>" <?php selected($type->slug, $currentType) ?>><?= $type->name ?></option>
+                    <?php endforeach; ?>
                 </select>
-                <label for="kind">Type</label>
+                <label for="property_type">Type</label>
             </div>
             <div class="form-group">
                 <input type="number" class="form-control" id="rooms" placeholder="4">
