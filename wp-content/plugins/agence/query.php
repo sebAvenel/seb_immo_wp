@@ -11,6 +11,8 @@ $propertyCategories = [];
 add_filter('query_vars', function (array $params): array {
     $params[] = 'property_category';
     $params[] = 'city';
+    $params[] = 'price';
+
     return $params;
 });
 add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories): void {
@@ -30,7 +32,7 @@ add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories)
     }
 
     $city = get_query_var('city');
-    if (get_query_var('city')){
+    if ($city){
         $tax_query = $query->get('tax_query', []);
         $tax_query[] = [
             'taxonomy' => 'property_city',
@@ -38,6 +40,18 @@ add_action('pre_get_posts', function (WP_Query $query) use(&$propertyCategories)
             'field' => 'slug'
         ];
         $query->set('tax_query', $tax_query);
+    }
+
+    $price = (int)get_query_var('price');
+    if ($price){
+        $meta_query = $query->get('meta_query', []);
+        $meta_query[] = [
+            'key' => 'price',
+            'value' => $price,
+            'compare' => '<=',
+            'type' => 'NUMERIC'
+        ];
+        $query->set('meta_query', $meta_query);
     }
 });
 
