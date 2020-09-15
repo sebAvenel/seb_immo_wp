@@ -1,5 +1,8 @@
 <?php get_header(); ?>
-
+<?php
+    $isRent = get_query_var('property_category', 'buy') === _x('rent', 'URL', 'agence');
+    var_dump($isRent);
+?>
 <div class="container page-properties">
 
     <div class="search-form">
@@ -9,11 +12,11 @@
         <form action="listing.html" class="search-form__form">
             <div class="search-form__checkbox">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" checked="" type="radio" name="type" id="buy" value="buy">
+                    <input class="form-check-input" <?php checked(!$isRent) ?> type="radio" name="property_category" id="buy" value="buy">
                     <label class="form-check-label" for="buy">Acheter</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" id="rent" value="rent">
+                    <input class="form-check-input" <?php checked($isRent) ?> type="radio" name="property_category" id="rent" value="rent">
                     <label class="form-check-label" for="rent">Louer</label>
                 </div>
             </div>
