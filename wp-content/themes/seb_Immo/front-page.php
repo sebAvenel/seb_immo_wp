@@ -107,26 +107,28 @@
             </section>
         <?php endwhile; endif; ?>
 
-        <section class="container quote">
-            <div class="quote__title">Ce que pensent nos clients</div>
-            <div class="quote__body">
-                <div class="quote__image">
-                    <img src="quote-man.5c402ea9.png" alt="">
-                    <div class="quote__author">Stephane, Agent immobilier</div>
+        <!-- Quote -->
+        <?php if (have_rows('quote')): while (have_rows('quote')): the_row() ?>
+            <section class="container quote">
+                <div class="quote__title"><?php the_sub_field('title') ?></div>
+                <div class="quote__body">
+                    <div class="quote__image">
+                        <img src="<?php the_sub_field('avatar') ?>" alt="">
+                        <div class="quote__author"><?php the_sub_field('cite') ?></div>
+                    </div>
+                    <blockquote>
+                        <?php the_sub_field('content') ?>
+                    </blockquote>
                 </div>
-                <blockquote>
-                    <p>J'ai voulu vendre mon bien et j'ai été très bien conseillé, des agents très professionnels et
-                        investis.</p>
-                </blockquote>
-            </div>
 
-            <a class="quote__action btn" href="#">
-                Estimer mon bien
-                <svg class="icon">
-                    <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                </svg>
-            </a>
-        </section>
+                <?php if ($action = get_sub_field('action')): ?>
+                <a class="quote__action btn" href="<?= $action['url'] ?>">
+                    <?= $action['title'] ?>
+                    <?= seb_Immo_icon('arrow') ?>
+                </a>
+                <?php endif; ?>
+            </section>
+        <?php endwhile; endif; ?>
 
         <!-- Read our stories -->
         <section class="container push-news">
