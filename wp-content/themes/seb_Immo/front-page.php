@@ -179,12 +179,11 @@
         <?php endwhile; endif; ?>
 
         <!-- Newsletter -->
+        <?php if (have_rows('newsletter')): while (have_rows('newsletter')): the_row() ?>
         <section class="newsletter">
             <form class="newsletter__body">
-                <div class="newsletter__title">Restez connecté</div>
-                <p>
-                    Recevez les dernières nouveautés concernant l'agence en vous inscrivant à notre newsletter
-                </p>
+                <div class="newsletter__title"><?php the_sub_field('title') ?></div>
+                <?php the_sub_field('description') ?>
                 <div class="form-group">
                     <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
                     <label for="email">Votre email</label>
@@ -192,12 +191,13 @@
                 <!--
                 <input type="email" class="form-control" placeholder="Enter your email adress">
                 -->
-                <button type="submit" class="btn">S'inscrire</button>
+                <button type="submit" class="btn"><?= __('Sign up', 'seb_Immo') ?></button>
             </form>
             <div class="newsletter__image">
-                <img src="man.87215a62.png" alt="">
+                <img src="<?php the_sub_field('avatar') ?>" alt="">
             </div>
         </section>
+        <?php endwhile; endif; ?>
 
     </main>
 <?php endwhile; ?>
