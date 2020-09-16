@@ -74,7 +74,7 @@
                             'posts_per_page' => 4
                         ];
                         $highlighted = get_sub_field('highlighted_property');
-                        if ($highlighted){
+                        if ($highlighted) {
                             $query['post__not_in'] = [$highlighted->ID];
                         }
                         $query = new WP_Query($query);
@@ -91,7 +91,8 @@
                             <?= get_the_post_thumbnail($highlighted, 'property-thumbnail-home') ?>
                             <div class="highlighted__body">
                                 <div class="highlighted__title"><a
-                                            href="<?php the_permalink($highlighted); ?>"><?= get_the_title($highlighted) ?></a></div>
+                                            href="<?php the_permalink($highlighted); ?>"><?= get_the_title($highlighted) ?></a>
+                                </div>
                                 <div class="highlighted__price"><?php agence_price($highlighted) ?></div>
                                 <div class="highlighted__location"><?php agence_city($highlighted) ?></div>
                                 <div class="highlighted__space"><?php the_field('surface', $highlighted) ?>m²</div>
@@ -122,64 +123,60 @@
                 </div>
 
                 <?php if ($action = get_sub_field('action')): ?>
-                <a class="quote__action btn" href="<?= $action['url'] ?>">
-                    <?= $action['title'] ?>
-                    <?= seb_Immo_icon('arrow') ?>
-                </a>
+                    <a class="quote__action btn" href="<?= $action['url'] ?>">
+                        <?= $action['title'] ?>
+                        <?= seb_Immo_icon('arrow') ?>
+                    </a>
                 <?php endif; ?>
             </section>
         <?php endwhile; endif; ?>
 
         <!-- Read our stories -->
-        <section class="container push-news">
-            <h2 class="push-news__title">Dernière actualités</h2>
-            <p>Retrouvez toutes les actualités liées à nos agences autour de Montpellier.</p>
-            <div class="push-news__grid">
-                <a href="#" class="push-news__item">
-                    <picture>
-                        <source media="(max-width: 950px)" srcset="https://picsum.photos/id/849/910/910.jpg">
-                        <img src="https://picsum.photos/id/849/385/640.jpg">
-                    </picture>
-                    <span class="push-news__tag">Tendance</span>
-                    <h3 class="push-news__label">Studio in the heart of San Francisco CBD @ Circular Quay</h3>
-                </a>
-                <div class="news-overlay">
-
-                    <picture>
-                        <source media="(max-width: 545px)" srcset="https://picsum.photos/id/851/910/700.jpg">
-                        <source media="(max-width: 950px)" srcset="https://picsum.photos/id/851/910/500.jpg">
-                        <img src="https://picsum.photos/id/851/912/318.jpg">
-                    </picture>
-                    <div class="news-overlay__body">
-                        <div class="news-overlay__title">
-                            Consultez tous nos articles <br> liés à l'immobilier
-                        </div>
-                        <a href="#" class="news-overlay__btn btn">
-                            Lire nos articles
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
+        <?php if (have_rows('recent_posts')): while (have_rows('recent_posts')): the_row() ?>
+            <section class="container push-news">
+                <h2 class="push-news__title"><?php the_sub_field('title') ?></h2>
+                <?php the_sub_field('description') ?>
+                <?php
+                $query = new WP_Query([
+                    'post_type' => 'post',
+                    'posts_per_page' => 3
+                ]);
+                ?>
+                <div class="push-news__grid">
+                    <?php $i = 0;
+                    while ($query->have_posts()): $query->the_post();
+                        $i++; ?>
+                        <a href="<?php the_permalink(); ?>" class="push-news__item">
+                            <?php the_post_thumbnail('posts-thumbnail-home') ?>
+                            <span class="push-news__tag">Tendance</span>
+                            <h3 class="push-news__label"><?php the_title() ?></h3>
                         </a>
-                    </div>
+                        <?php if ($i === 1): ?>
+                            <div class="news-overlay">
+
+                                <picture>
+                                    <source media="(max-width: 545px)"
+                                            srcset="https://picsum.photos/id/851/910/700.jpg">
+                                    <source media="(max-width: 950px)"
+                                            srcset="https://picsum.photos/id/851/910/500.jpg">
+                                    <img src="<?= get_sub_field('background_image')['sizes']['posts-thumbnail-home'] ?>">
+                                </picture>
+                                <div class="news-overlay__body">
+                                    <div class="news-overlay__title">
+                                        <?= __('Read all our posts <br> about real estate', 'seb_Immo') ?>>
+                                    </div>
+                                    <a href="<?= get_post_type_archive_link('post') ?>" class="news-overlay__btn btn">
+                                        <?= __('All our posts', 'seb_Immo'); ?>
+                                        <?= seb_Immo_icon('arrow'); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
                 </div>
-                <a href="#" class="push-news__item">
-                    <picture>
-                        <source media="(max-width: 950px)" srcset="https://picsum.photos/id/852/910/910.jpg">
-                        <img src="https://picsum.photos/id/852/322/274.jpg">
-                    </picture>
-                    <span class="push-news__tag">Financement</span>
-                    <h3 class="push-news__label">Studio in the heart of San Francisco CBD @ Circular Quay</h3>
-                </a>
-                <a href="#" class="push-news__item">
-                    <picture>
-                        <source media="(max-width: 950px)" srcset="https://picsum.photos/id/853/910/910.jpg">
-                        <img src="https://picsum.photos/id/853/556/274.jpg">
-                    </picture>
-                    <span class="push-news__tag">Prêt</span>
-                    <h3 class="push-news__label">Studio in the heart of San Francisco CBD @ Circular Quay</h3>
-                </a>
-            </div>
-        </section>
+            </section>
+        <?php endwhile; endif; ?>
 
         <!-- Newsletter -->
         <section class="newsletter">
