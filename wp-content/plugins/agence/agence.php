@@ -41,7 +41,7 @@ add_action('init', function (){
         'has_archive' => true,
         'public' => true, // rendre le post type public, accessible
         'hierrachical' => false, // ne pas avoir de biens avec des sous-biens
-        'exclude_from_search' => false, // on veut que ça apparaisse dans la recherche
+        'exclude_from_search' => true, // on veut que ça apparaisse dans la recherche
         'rewrite' => [
             'slug' => _x('property', 'URL', 'agence')
         ],
@@ -123,6 +123,7 @@ register_activation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des r
 register_deactivation_hook(__FILE__, 'flush_rewrite_rules'); // réécriture des règles à la désactivation du plugin
 
 require_once('query.php');
+require_once('rewrite.php');
 
 /**
  * fonction de récupération de la ville et du code postal
@@ -153,4 +154,12 @@ function agence_price( $post = null): void {
     } else{
         echo sprintf(__('%s $/mo', 'seb_Immo'), number_format_i18n(get_field('price', $post)));
     }
+}
+
+function agence_rent_route_name(){
+    return _x('rent', 'URL', 'agence');
+}
+
+function agence_buy_route_name(){
+    return _x('buy', 'URL', 'agence');
 }
