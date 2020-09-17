@@ -602,10 +602,139 @@ var Carousel = /*#__PURE__*/function () {
 }();
 
 exports.default = Carousel;
+},{}],"fnTp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.slideUp = slideUp;
+exports.slideUpAndRemove = slideUpAndRemove;
+exports.slideDown = slideDown;
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/**
+ * Masque un élément avec un effet de repli
+ * @param {HTMLElement} element
+ * @param {Number} duration
+ * @returns {Promise<boolean>}
+ */
+function slideUp(element) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  return new Promise(function (resolve, reject) {
+    element.style.height = element.offsetHeight + 'px';
+    element.style.transitionProperty = "height, margin, padding";
+    element.style.transitionDuration = duration + 'ms';
+    element.offsetHeight; // eslint-disable-line no-unused-expressions
+
+    element.style.overflow = 'hidden';
+    element.style.height = 0;
+    element.style.paddingTop = 0;
+    element.style.paddingBottom = 0;
+    element.style.marginTop = 0;
+    element.style.marginBottom = 0;
+    window.setTimeout(function () {
+      element.style.display = 'none';
+      element.style.removeProperty('height');
+      element.style.removeProperty('padding-top');
+      element.style.removeProperty('padding-bottom');
+      element.style.removeProperty('margin-top');
+      element.style.removeProperty('margin-bottom');
+      element.style.removeProperty('overflow');
+      element.style.removeProperty('transition-duration');
+      element.style.removeProperty('transition-property');
+      resolve(element);
+    }, duration);
+  });
+}
+/**
+ * Masque un élément avec un effet de repli
+ * @param {HTMLElement} element
+ * @param {Number} duration
+ * @returns {Promise<boolean>}
+ */
+
+
+function slideUpAndRemove(_x) {
+  return _slideUpAndRemove.apply(this, arguments);
+}
+/**
+ * Affiche un élément avec un effet de dépliement
+ * @param {HTMLElement} element
+ * @param {Number} duration
+ * @returns {Promise<boolean>}
+ */
+
+
+function _slideUpAndRemove() {
+  _slideUpAndRemove = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(element) {
+    var duration,
+        r,
+        _args = arguments;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            duration = _args.length > 1 && _args[1] !== undefined ? _args[1] : 500;
+            _context.next = 3;
+            return slideUp(element);
+
+          case 3:
+            r = _context.sent;
+            element.parentNode.removeChild(element);
+            return _context.abrupt("return", r);
+
+          case 6:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _slideUpAndRemove.apply(this, arguments);
+}
+
+function slideDown(element) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  return new Promise(function (resolve, reject) {
+    element.style.removeProperty('display');
+    var display = window.getComputedStyle(element).display;
+    if (display === 'none') display = 'block';
+    element.style.display = display;
+    var height = element.offsetHeight;
+    element.style.overflow = 'hidden';
+    element.style.height = 0;
+    element.style.paddingTop = 0;
+    element.style.paddingBottom = 0;
+    element.style.marginTop = 0;
+    element.style.marginBottom = 0;
+    element.offsetHeight; // eslint-disable-line no-unused-expressions
+
+    element.style.transitionProperty = "height, margin, padding";
+    element.style.transitionDuration = duration + 'ms';
+    element.style.height = height + 'px';
+    element.style.removeProperty('padding-top');
+    element.style.removeProperty('padding-bottom');
+    element.style.removeProperty('margin-top');
+    element.style.removeProperty('margin-bottom');
+    window.setTimeout(function () {
+      element.style.removeProperty('height');
+      element.style.removeProperty('overflow');
+      element.style.removeProperty('transition-duration');
+      element.style.removeProperty('transition-property');
+      resolve(element);
+    }, duration);
+  });
+}
 },{}],"d6sW":[function(require,module,exports) {
 "use strict";
 
 var _carousel = _interopRequireDefault(require("./modules/carousel.js"));
+
+var _animation = require("./modules/animation");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -620,5 +749,14 @@ if (slider) {
     infinite: true
   });
 }
-},{"./modules/carousel.js":"OeaJ"}]},{},["d6sW"], null)
-//# sourceMappingURL=main.ef23f591.js.map
+
+var contact = document.querySelector('#bien-contact');
+
+if (contact) {
+  contact.addEventListener('click', function () {
+    (0, _animation.slideUp)(document.querySelector('#bien-actions'));
+    (0, _animation.slideDown)(document.querySelector('#bien-form'));
+  });
+}
+},{"./modules/carousel.js":"OeaJ","./modules/animation":"fnTp"}]},{},["d6sW"], null)
+//# sourceMappingURL=main.fb6bbcaf.js.map
