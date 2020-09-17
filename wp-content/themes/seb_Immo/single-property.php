@@ -15,16 +15,12 @@
               
                 <div class="bien__actions" id="bien-actions">
                     <button class="btn btn-filled" id="bien-contact">Contacter l'agence</button>
-                    <button class="btn">Appeler</button>
+                    <!--<button class="btn">Appeler</button>-->
                 </div>
+
 
                 <div class="hidden" id="bien-form">
                     <?= do_shortcode('[contact-form-7 id="151" title="" html_class="bien__form form-2column"]'); ?>
-                </div>
-
-                <div class="bien__actions">
-                    <button class="btn btn-filled">Contacter l'agence</button>
-                    <button class="btn">Appeler</button>
                 </div>
 
                 <!--
