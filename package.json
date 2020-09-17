@@ -1,0 +1,6 @@
+{
+  "name": "seb_immo_wp",
+  "dependencies": {
+    "maildev": "^1.1.0"
+  }
+}
